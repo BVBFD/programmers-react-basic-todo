@@ -20,16 +20,14 @@ const Editor = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setPosts((prevPosts: any) => [
-      ...prevPosts,
       {
         id: Number(prevPosts.length),
         ...post,
         created_at: `${new Date().toLocaleDateString()}`,
       },
+      ...prevPosts,
     ]);
   };
-
-  console.log(post);
 
   return (
     <form action="submit" className={styles.editor} onSubmit={handleSubmit}>
