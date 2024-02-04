@@ -42,7 +42,7 @@ const App: React.FC = () => {
       <header className="title-nav">
         <h1>{title}</h1>
       </header>
-      <Editor posts={posts} setPosts={setPosts} />
+      <Editor setPosts={setPosts} />
       <Lists posts={posts} setPosts={setPosts} />
     </main>
   );

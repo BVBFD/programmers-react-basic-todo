@@ -10,21 +10,19 @@ interface PostType {
 }
 
 const Editor = ({
-  posts,
   setPosts,
 }: {
-  posts: PostType[];
   setPosts: React.Dispatch<React.SetStateAction<PostType[]>>;
 }) => {
   const [post, setPost] = useState<PostType>();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setPosts((prevPosts: any) => [
+    setPosts((prevPosts: PostType[]) => [
       {
         id: Number(prevPosts.length),
         ...post,
         created_at: `${new Date().toLocaleDateString()}`,
-      },
+      } as PostType,
       ...prevPosts,
     ]);
   };
