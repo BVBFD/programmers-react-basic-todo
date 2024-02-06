@@ -2,6 +2,7 @@ import "./App.css";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Detail from "./pages/Detail/Detail";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/detail" element={<div>detail</div>} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </div>
   );
