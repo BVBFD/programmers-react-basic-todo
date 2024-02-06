@@ -1,0 +1,14 @@
+.container {
+  cursor: pointer;
+}
+
+.container h5 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.15rem !important;
+  font-weight: bold;
+}
+
+.container p {
+  font-size: 1rem;
+  color: lightslategray;
+}
