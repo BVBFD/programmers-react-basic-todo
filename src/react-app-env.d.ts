@@ -5,5 +5,9 @@ interface CoffeeType {
   title: string;
   content: string;
   price: number;
-  img: string;
+}
+
+interface ContextStorageType {
+  stock: number;
+  setStock: React.Dispatch<React.SetStateAction<number>>;
 }
