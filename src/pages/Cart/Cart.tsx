@@ -1,8 +1,8 @@
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType, plusCount, minusCount } from "../../Redux/store";
+
 const Cart = () => {
-  const { user } = useSelector((state: RootStateType) => state);
   const { cart } = useSelector((state: RootStateType) => state.cart);
   const dispatch = useDispatch();
 

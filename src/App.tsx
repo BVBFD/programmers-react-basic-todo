@@ -6,6 +6,8 @@ import Detail from "./pages/Detail/Detail";
 import About from "./pages/About/About";
 import { createContext, useContext, useMemo, useState } from "react";
 import Cart from "./pages/Cart/Cart";
+import BestCoffee from "./pages/BestCoffee/BestCoffee";
+import Contact from "./pages/Contact/Contact";
 
 const ContextStorage = createContext<ContextStorageType>({
   stock: 0,
@@ -39,7 +41,9 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
             <Nav.Link onClick={() => navigate("/about")}>About</Nav.Link>
+            <Nav.Link onClick={() => navigate("/best")}>Best-Coffee</Nav.Link>
             <Nav.Link onClick={() => navigate("/cart")}>Cart</Nav.Link>
+            <Nav.Link onClick={() => navigate("/contact")}>Contact</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -56,6 +60,8 @@ function App() {
           }
         />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/best" element={<BestCoffee />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );
