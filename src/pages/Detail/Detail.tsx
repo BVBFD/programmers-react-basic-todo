@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Nav } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Banner from "../../Components/Banner/Banner";
 import axios from "axios";
 import { useStock } from "../../App";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../Redux/store";
 
 const Title = styled.h5`
   font-weight: bolder;
@@ -25,6 +27,8 @@ const Detail = () => {
   const [discount, setDiscount] = useState<boolean>(true);
   const [tab, setTab] = useState<"info" | "review" | "exchange">("info");
   const { stock, setStock } = useStock();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getCoffeeDetail = async () => {
     try {
@@ -122,7 +126,20 @@ const Detail = () => {
           <Title>{coffee?.title}</Title>
           <Content>{coffee?.content}</Content>
           <Price>{coffee?.price}</Price>
-          <button className="btn btn-primary">캐리어에 담기</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              dispatch(
+                addItem({
+                  id: parseInt(`${id}`) as number,
+                  title: `${coffee?.title}`,
+                })
+              );
+              navigate("/cart");
+            }}
+          >
+            캐리어에 담기
+          </button>
         </Col>
       </Row>
       <br />

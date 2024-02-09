@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Detail from "./pages/Detail/Detail";
 import About from "./pages/About/About";
 import { createContext, useContext, useMemo, useState } from "react";
+import Cart from "./pages/Cart/Cart";
 
 const ContextStorage = createContext<ContextStorageType>({
   stock: 0,
@@ -29,11 +30,16 @@ function App() {
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand onClick={() => navigate("/")}>Coffee Mate</Navbar.Brand>
+          <Navbar.Brand
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          >
+            Coffee Mate
+          </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
             <Nav.Link onClick={() => navigate("/about")}>About</Nav.Link>
-            <Nav.Link onClick={() => navigate("/detail")}>Detail</Nav.Link>
+            <Nav.Link onClick={() => navigate("/cart")}>Cart</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -49,6 +55,7 @@ function App() {
             </ContextStorage.Provider>
           }
         />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
