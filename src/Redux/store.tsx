@@ -29,10 +29,16 @@ const cart = createSlice({
   },
   reducers: {
     plusCount: (state, action) => {
-      state.cart[action.payload].count += 1;
+      const index = state.cart.findIndex(
+        (coffee) => coffee.id === action.payload
+      );
+      state.cart[index].count += 1;
     },
     minusCount: (state, action) => {
-      state.cart[action.payload].count -= 1;
+      const index = state.cart.findIndex(
+        (coffee) => coffee.id === action.payload
+      );
+      state.cart[index].count -= 1;
 
       if (state.cart[action.payload].count === 0) {
         state.cart = state.cart.filter(
@@ -41,7 +47,9 @@ const cart = createSlice({
       }
     },
     addItem: (state, action) => {
-      const isExisted = state.cart.find((item) => item.id === action.payload);
+      const isExisted = state.cart.find(
+        (item) => item.id === action.payload.id
+      );
       if (isExisted) {
         isExisted.count += 1;
       } else {

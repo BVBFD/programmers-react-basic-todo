@@ -1,8 +1,6 @@
 import { Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styles from "./Coffee.module.css";
-import axios from "axios";
-import { useEffect } from "react";
 
 const Coffee = ({ coffee }: { coffee: CoffeeType }) => {
   const navigate = useNavigate();
