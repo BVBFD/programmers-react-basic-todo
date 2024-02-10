@@ -40,7 +40,7 @@ const cart = createSlice({
       );
       state.cart[index].count -= 1;
 
-      if (state.cart[action.payload].count === 0) {
+      if (state.cart[index].count === 0) {
         state.cart = state.cart.filter(
           (coffee) => coffee.id !== action.payload
         );
@@ -54,7 +54,7 @@ const cart = createSlice({
         isExisted.count += 1;
       } else {
         state.cart.push({
-          id: state.cart.length,
+          id: action.payload.id,
           title: action.payload.title,
           count: 1,
         });
