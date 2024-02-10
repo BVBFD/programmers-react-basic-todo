@@ -1,4 +1,6 @@
 import { combineReducers, configureStore, createSlice } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const user = createSlice({
   name: "user",
@@ -71,9 +73,23 @@ const rootReducer = combineReducers({
   cart: cart.reducer,
 });
 
+// persistConfig 설정
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart"], // 지속시킬 슬라이스를 설정합니다.
+};
+
+// persistedReducer 생성
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// configureStore 함수를 사용하여 store를 생성합니다.
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
 });
+
+// persistor를 생성합니다.
+export const persistor = persistStore(store);
 
 export type RootStateType = ReturnType<typeof store.getState>;
 export default store;
